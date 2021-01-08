@@ -27,7 +27,6 @@
   @retval  Other     An error occurred.
 ***/
 #include "GpioBLake.h"
-#include <Bit.h>
 
 UINT32 GetPadValue ( UINT32 Community,
                      UINT32 Offset)
