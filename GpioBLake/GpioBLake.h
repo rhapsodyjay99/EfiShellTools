@@ -28,19 +28,9 @@ enum
    IclPchH = 6,
    IclPchLp = 7,
    TglPchLp = 8,
-   TglPchH = 9
+   TglPchH = 9,
+   AdlPchH = 10
 };
-
-UINT32 BITn[] = {
-                   0x00000001, 0x00000002, 0x00000004, 0x00000008, 
-                   0x00000010, 0x00000020, 0x00000040, 0x00000080, 
-                   0x00000100, 0x00000200, 0x00000400, 0x00000800, 
-                   0x00001000, 0x00002000, 0x00004000, 0x00008000, 
-                   0x00010000, 0x00020000, 0x00040000, 0x00080000, 
-                   0x00100000, 0x00200000, 0x00400000, 0x00800000, 
-                   0x01000000, 0x02000000, 0x04000000, 0x08000000,
-                   0x10000000, 0x20000000, 0x40000000, 0x80000000 
-                };
 
 //Function declaration
 UINT8  GetPchSeries (void);
@@ -66,7 +56,15 @@ ParseAndPrintLockStatus(
    UINT32 LockOffset,
    UINT8  GroupSize
    );
+//ADL dump funcitons
 //TGL dump functions
+VOID ADL_DumpAllPCH_H (void);
+VOID ADL_DumpCommunity0PCH_H (void);
+VOID ADL_DumpCommunity2PCH_H (void);
+VOID ADL_DumpCommunity1PCH_H (void);
+VOID ADL_DumpCommunity3PCH_H (void);
+VOID ADL_DumpCommunity4PCH_H (void);
+VOID ADL_DumpCommunity5PCH_H (void);
 //Dump PCH-H
 VOID TGL_DumpAllPCH_H (void);
 VOID TGL_DumpCommunity0PCH_H (void);
@@ -135,6 +133,11 @@ VOID SKL_DumpLockStatusPCH_LP(void);
 VOID SetColor(UINT8 Color);
 VOID PrintHelpMsg (void);
 
+VOID PrintAdlHGroupName (
+   UINT32 Community,
+   UINT32 GroupOffset
+  );
+
 VOID PrintTglLpGroupName (
    UINT32 Community,
    UINT32 GroupOffset
@@ -186,6 +189,13 @@ VOID PrintCommunityGroupHeader(
 #define   Pad_OUT          2
 #define   Pad_IN           1
 #define   Pad_INOUT        0
+// ADL
+#define   ADL_PID_GPIOCOM0 0x0000006E
+#define   ADL_PID_GPIOCOM1 0x0000006D
+#define   ADL_PID_GPIOCOM2 0x0000006C
+#define   ADL_PID_GPIOCOM3 0x0000006B
+#define   ADL_PID_GPIOCOM4 0x0000006A
+#define   ADL_PID_GPIOCOM5 0x00000069
 // TGL
 #define   TGL_PID_GPIOCOM0 0x0000006E
 #define   TGL_PID_GPIOCOM1 0x0000006D
@@ -211,6 +221,28 @@ VOID PrintCommunityGroupHeader(
 #define   SKL_PID_GPIOCOM1 0x000000AE
 #define   SKL_PID_GPIOCOM2 0x000000AD
 #define   SKL_PID_GPIOCOM3 0x000000AC
+//ADL Group Base definition
+//PCH-H
+//PCH-H Community 0
+#define  ADL_GPPIbase               0x00000700
+#define  ADL_GPPRbase               0x00000890
+#define  ADL_GPPJbase               0x00000A00
+//PCH-H Community 1
+#define  ADL_GPPBbase               0x00000700
+#define  ADL_GPPGbase               0x00000880
+#define  ADL_GPPHbase               0x00000900
+//PCH-H Community 2
+#define  ADL_GPDbase                0x00000700
+//PCH-H Community 3
+#define  ADL_GPPAbase               0x00000790
+#define  ADL_GPPCbase               0x00000890
+//PCH-H Community 4
+#define  ADL_GPPSbase               0x00000700
+#define  ADL_GPPEbase               0x00000780
+#define  ADL_GPPKbase               0x000008F0
+#define  ADL_GPPFbase               0x000009E0
+//PCH-H Community 5
+#define  ADL_GPPDbase               0x00000700
 
 //TGL Group Base definition
 //PCH-H
@@ -416,6 +448,8 @@ VOID PrintCommunityGroupHeader(
 #define   SKL_LPGPPGbase            0x000004C0
 //Group Size
 #define   GroupSize24      24
+#define   GroupSize23      23
+#define   GroupSize22      22
 #define   GroupSize20      20
 #define   GroupSize16      16
 #define   GroupSize15      15
@@ -440,6 +474,9 @@ VOID PrintCommunityGroupHeader(
 #define   V_LPC_CFG_DID_ICL_LP      0x3480
 #define   V_LPC_CFG_DID_TGL_LP      0xA080
 #define   V_LPC_CFG_DID_TGL_H       0x4380
+#define   V_LPC_CFG_DID_ADL_S       0x7A80
+#define   V_LPC_CFG_DID_ADL_P       0x5180
+#define   V_LPC_CFG_DID_ADL_M       0x5480
 //#define   V_LPC_CFG_DID_TGL_LP_UP3  0xA081  ///< PCH LP Mobile U Super SKU (SSKU)
 //#define   V_LPC_CFG_DID_TGL_LP_UP4  0xA086  ///< PCH LP Mobile U Premium
 //#define   V_LPC_CFG_DID_TGL_PR_UP3  0xA082  ///< PCH LP Mobile Y Super SKU (SSKU)v

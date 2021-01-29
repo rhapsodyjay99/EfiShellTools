@@ -28,6 +28,19 @@
 ***/
 #include "GpioBLake.h"
 
+
+UINT32 BITn[] = {
+                   0x00000001, 0x00000002, 0x00000004, 0x00000008, 
+                   0x00000010, 0x00000020, 0x00000040, 0x00000080, 
+                   0x00000100, 0x00000200, 0x00000400, 0x00000800, 
+                   0x00001000, 0x00002000, 0x00004000, 0x00008000, 
+                   0x00010000, 0x00020000, 0x00040000, 0x00080000, 
+                   0x00100000, 0x00200000, 0x00400000, 0x00800000, 
+                   0x01000000, 0x02000000, 0x04000000, 0x08000000,
+                   0x10000000, 0x20000000, 0x40000000, 0x80000000 
+                };
+
+
 UINT32 GetPadValue ( UINT32 Community,
                      UINT32 Offset)
 {
@@ -49,8 +62,10 @@ VOID ParseAndPrintPadStatus(
   for (i = 0; i < GroupSize; i++)
   {
 
+    //GpioPadValue = GetPadValue (Community, GroupOffset + \
+    //((PchSeries == CnlPchH || PchSeries == CnlPchLp || PchSeries == CmlPchH ||  PchSeries == CmlPchLp || PchSeries == IclPchLp || PchSeries == TglPchLp || PchSeries == TglPchH)? i*16 : i*8));
     GpioPadValue = GetPadValue (Community, GroupOffset + \
-    ((PchSeries == CnlPchH || PchSeries == CnlPchLp || PchSeries == CmlPchH ||  PchSeries == CmlPchLp || PchSeries == IclPchLp || PchSeries == TglPchLp || PchSeries == TglPchH)? i*16 : i*8));
+    ((PchSeries == SklKblPchLp || PchSeries == SklKblCmlvPchH)? i*8 : i*16));
 
     if(GpioPadValue == 0xffffffff)
     { 
@@ -143,6 +158,69 @@ VOID ParseAndPrintLockStatus(
      }
      Print(L"\n");
   }
+}
+
+VOID PrintAdlHGroupName (
+   UINT32 Community,
+   UINT32 GroupOffset
+  )
+{
+   if ((Community == ADL_PID_GPIOCOM0) && (GroupOffset == ADL_GPPIbase))
+   {
+      Print(L"Community 0:GPP_I\n");
+   }
+   else if ((Community == ADL_PID_GPIOCOM0) && (GroupOffset == ADL_GPPRbase))
+   {
+      Print(L"Community 0:GPP_R\n");
+   }
+   else if ((Community == ADL_PID_GPIOCOM0) && (GroupOffset == ADL_GPPJbase))
+   {
+      Print(L"Community 0:GPP_J\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM1 && GroupOffset == ADL_GPPBbase)
+   {
+      Print(L"Community 1:GPP_B\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM1 && GroupOffset == ADL_GPPGbase)
+   {
+      Print(L"Community 1:GPP_G\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM1 && GroupOffset == ADL_GPPHbase)
+   {
+      Print(L"Community 1:GPP_H\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM2 && GroupOffset == ADL_GPDbase)
+   {
+      Print(L"Community 2:GPD\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM3 && GroupOffset == ADL_GPPAbase)
+   {
+      Print(L"Community 3:GPP_A\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM3 && GroupOffset == ADL_GPPCbase)
+   {
+      Print(L"Community 3:GPP_C\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_GPPSbase)
+   {
+      Print(L"Community 4:GPP_S\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_GPPEbase)
+   {
+      Print(L"Community 4:GPP_E\n");
+   }
+   else if(Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_GPPKbase)
+   {
+      Print(L"Community 4:GPP_K\n");
+   }
+   else if(Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_GPPFbase)
+   {
+      Print(L"Community 4:GPP_F\n");
+   }
+   else if(Community == ADL_PID_GPIOCOM5 && GroupOffset == ADL_GPPDbase)
+   {
+      Print(L"Community 5:GPP_D\n");
+   }
 }
 
 VOID PrintTglHGroupName (

@@ -1,5 +1,5 @@
 # GpioBLake
-Gpio tool for Skylake, Kabylake, CnlLake, Whiskylake, Ice Lake(LP), Tiger Lake(H/LP)
+Gpio tool for Skylake, Kabylake, CnlLake, Whiskylake, Ice Lake(LP), Tiger Lake(H/LP), Adler Lake(S)
 
 ## Requirement:
 Intel Big core chipset after Skylake.
