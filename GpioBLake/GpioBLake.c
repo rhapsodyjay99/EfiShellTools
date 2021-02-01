@@ -425,7 +425,7 @@ UINT8 GetPchSeries ()
 
 VOID PrintHelpMsg()
 {
-   Print(L"GPIO tool Ver. 4.0\n\n");
+   Print(L"GPIO tool Ver. 4.1\n\n");
    Print(L"To show help menu:\n");
    Print(L"fs#:\\>GpioBLake.efi ? or fs#:\\GpioBLake.efi h\n");
    Print(L"To Dump all Gpios:\n");

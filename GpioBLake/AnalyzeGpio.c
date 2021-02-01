@@ -596,6 +596,10 @@ PrintCommunityGroupHeader(
 
   switch (PchSeries)
   {
+     case AdlPchH:
+        PrintAdlHGroupName(Community, GroupOffset);
+        break;
+
      case TglPchH:
         PrintTglHGroupName(Community, GroupOffset);
         break;
