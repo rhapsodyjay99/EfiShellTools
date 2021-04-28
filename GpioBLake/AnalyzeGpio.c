@@ -44,7 +44,11 @@ UINT32 BITn[] = {
 UINT32 GetPadValue ( UINT32 Community,
                      UINT32 Offset)
 {
-  return MmioRead32 (PCH_PCR_BASE_ADDRESS + (Community << 16) + Offset);
+   if(PchSeries == AdlPchS)
+   {
+      return MmioRead32 (PCH_PCR_BASE_ADDRESS_ADLS + (Community << 16) + Offset);
+   }
+   return MmioRead32 (PCH_PCR_BASE_ADDRESS + (Community << 16) + Offset);
 }
 
 VOID ParseAndPrintPadStatus( 
@@ -596,7 +600,7 @@ PrintCommunityGroupHeader(
 
   switch (PchSeries)
   {
-     case AdlPchH:
+     case AdlPchS:
         PrintAdlHGroupName(Community, GroupOffset);
         break;
 

@@ -11,7 +11,8 @@
 #define PCI_LIB_ADDRESS(Bus,Device,Function,Register)   \
   (((Register) & 0xfff) | (((Function) & 0x07) << 12) | (((Device) & 0x1f) << 15) | (((Bus) & 0xff) << 20))
 
-#define PCH_PCR_BASE_ADDRESS            0xFD000000     ///< SBREG MMIO base address
+#define PCH_PCR_BASE_ADDRESS                 0xFD000000     ///< SBREG MMIO base address
+#define PCH_PCR_BASE_ADDRESS_ADLS            0xE0000000     ///< SBREG MMIO base address
 #define PCH_PCR_ADDRESS(Pid, Offset)    (PCH_PCR_BASE_ADDRESS | ((UINT8)(Pid) << 16) | (UINT16)(Offset))
 
 #define CRLF(Index, n) ((Index % n) == (n-1)) ? L"\r\n" : L""
@@ -29,7 +30,7 @@ enum
    IclPchLp = 7,
    TglPchLp = 8,
    TglPchH = 9,
-   AdlPchH = 10
+   AdlPchS = 10
 };
 
 //Function declaration

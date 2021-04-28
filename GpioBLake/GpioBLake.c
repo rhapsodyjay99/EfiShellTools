@@ -41,7 +41,7 @@ main (
   {
      PrintHelpMsg();
   }
-  if (PchSeries == AdlPchH)
+  if (PchSeries == AdlPchS)
   {
      if(Argv[1][0] == 'a' || Argv[1][0] == 'A') //Show All
      {
@@ -361,8 +361,8 @@ UINT8 GetPchSeries ()
    switch (PchDevId & B_LPC_CFG_DID)
    {
       case V_LPC_CFG_DID_ADL_S:
-         Print(L"PCH: AdlH\n");
-         PchSeries = AdlPchH;
+         Print(L"PCH: AdlS\n");
+         PchSeries = AdlPchS;
          break;
 
       case V_LPC_CFG_DID_TGL_LP:
@@ -425,7 +425,7 @@ UINT8 GetPchSeries ()
 
 VOID PrintHelpMsg()
 {
-   Print(L"GPIO tool Ver. 4.1\n\n");
+   Print(L"GPIO tool Ver. 4.2\n\n");
    Print(L"To show help menu:\n");
    Print(L"fs#:\\>GpioBLake.efi ? or fs#:\\GpioBLake.efi h\n");
    Print(L"To Dump all Gpios:\n");
