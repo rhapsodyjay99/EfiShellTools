@@ -49,38 +49,36 @@ VOID ADL_DumpAllPCH_H()
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM5, ADL_GPPDbase, GroupSize24);
 
 }
-/*
-VOID TGL_DumpAllPCH_LP()
+
+VOID ADL_DumpAllPCH_LP()
 {
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, TGL_LPGPPBbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_LPGPPBbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, TGL_LPGPPTbase, GroupSize2);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_LPGPPTbase, GroupSize2);
    Print(L"\n");
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, TGL_LPGPPAbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_LPGPPAbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPSbase, GroupSize8);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_LPGPPSbase, GroupSize8);
  
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPHbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_LPGPPHbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPDbase, GroupSize20);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_LPGPPDbase, GroupSize20);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPUbase, GroupSize2);
-   Print(L"\n");
-
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM2, TGL_LPGPDbase,  GroupSize12);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM2, ADL_LPGPDbase,  GroupSize12);
  
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, TGL_LPGPPCbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM3, ADL_vGPIObase,  GroupSize84);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, TGL_LPGPPFbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_LPGPPCbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, TGL_LPGPPEbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_LPGPPFbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM5, TGL_LPGPPRbase, GroupSize8);
-   Print(L"\n");
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_LPGPPEbase, GroupSize24);
+
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM5, ADL_LPGPPRbase, GroupSize8);
 }
-*/
+
 VOID ADL_DumpCommunity0PCH_H()
 {
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_GPPIbase, GroupSize23);
@@ -91,17 +89,17 @@ VOID ADL_DumpCommunity0PCH_H()
 
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_GPPJbase, GroupSize12);
 }
-/*
-VOID TGL_DumpCommunity0PCH_LP()
-{
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, TGL_LPGPPBbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, TGL_LPGPPTbase, GroupSize2);
+VOID ADL_DumpCommunity0PCH_LP()
+{
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_LPGPPBbase, GroupSize24);
+
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_LPGPPTbase, GroupSize2);
    Print(L"\n");
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, TGL_LPGPPAbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM0, ADL_LPGPPAbase, GroupSize24);
 }
-*/
+
 
 VOID ADL_DumpCommunity1PCH_H()
 {
@@ -111,31 +109,28 @@ VOID ADL_DumpCommunity1PCH_H()
 
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_GPPHbase, GroupSize24);
 }
-/*
-VOID TGL_DumpCommunity1PCH_LP()
+
+VOID ADL_DumpCommunity1PCH_LP()
 {
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPSbase, GroupSize8);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_LPGPPSbase, GroupSize8);
  
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPHbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_LPGPPHbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPDbase, GroupSize20);
-
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, TGL_LPGPPUbase, GroupSize2);
-   Print(L"\n");
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM1, ADL_LPGPPDbase, GroupSize20);
 }
-*/
+
 VOID ADL_DumpCommunity2PCH_H()
 {
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM2, ADL_GPDbase, GroupSize13);
    Print(L"\n");
 }
-/*
-VOID TGL_DumpCommunity2_LP()
+
+VOID ADL_DumpCommunity2_LP()
 {
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM2, TGL_LPGPDbase,  GroupSize12);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM2, ADL_LPGPDbase,  GroupSize12);
    Print(L"\n");
 }
-*/
+
 VOID ADL_DumpCommunity3PCH_H()
 {
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM3, ADL_GPPAbase, GroupSize15);
@@ -143,13 +138,12 @@ VOID ADL_DumpCommunity3PCH_H()
 
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM3, ADL_GPPCbase, GroupSize24);
 }
-/*
+
 VOID ADL_DumpCommunity3PCH_LP()
 {
-  // ParseAndPrintPadStatus(CNL_PID_GPIOCOM3, CNL_LPGPPAudbase, GroupSize8);
-  Print(L"Tiger Lake LP don't have GPIO Community 3\n");
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM3, ADL_vGPIObase,  GroupSize84);
 }
-*/
+
 VOID ADL_DumpCommunity4PCH_H()
 {
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_GPPSbase, GroupSize8);
@@ -160,28 +154,27 @@ VOID ADL_DumpCommunity4PCH_H()
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_GPPKbase, GroupSize12);
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_GPPFbase, GroupSize24);  
 }
-/*
+
 VOID ADL_DumpCommunity4PCH_LP()
 {  
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, TGL_LPGPPCbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_LPGPPCbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, TGL_LPGPPFbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_LPGPPFbase, GroupSize24);
 
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, TGL_LPGPPEbase, GroupSize24);
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM4, ADL_LPGPPEbase, GroupSize24);
    Print(L"\n");
 }
-*/
+
 VOID ADL_DumpCommunity5PCH_H()
 {  
    ParseAndPrintPadStatus(ADL_PID_GPIOCOM5, ADL_GPPDbase, GroupSize24);  
 }
-/*
+
 VOID ADL_DumpCommunity5PCH_LP()
 {  
-   ParseAndPrintPadStatus(ADL_PID_GPIOCOM5, TGL_LPGPPRbase, GroupSize8);
-   Print(L"\n");
+   ParseAndPrintPadStatus(ADL_PID_GPIOCOM5, ADL_LPGPPRbase, GroupSize8);
 }
-*/
+
 /*
 VOID CNL_DumpLockStatusPCH_H()
 {

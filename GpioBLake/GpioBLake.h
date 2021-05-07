@@ -30,7 +30,8 @@ enum
    IclPchLp = 7,
    TglPchLp = 8,
    TglPchH = 9,
-   AdlPchS = 10
+   AdlPchH = 10,
+   AdlPchLp = 11
 };
 
 //Function declaration
@@ -58,7 +59,7 @@ ParseAndPrintLockStatus(
    UINT8  GroupSize
    );
 //ADL dump funcitons
-//TGL dump functions
+//Dump PCH-H
 VOID ADL_DumpAllPCH_H (void);
 VOID ADL_DumpCommunity0PCH_H (void);
 VOID ADL_DumpCommunity2PCH_H (void);
@@ -66,6 +67,15 @@ VOID ADL_DumpCommunity1PCH_H (void);
 VOID ADL_DumpCommunity3PCH_H (void);
 VOID ADL_DumpCommunity4PCH_H (void);
 VOID ADL_DumpCommunity5PCH_H (void);
+//Dump PCH-LP
+VOID ADL_DumpAllPCH_LP(void);
+VOID ADL_DumpCommunity0PCH_LP(void);
+VOID ADL_DumpCommunity1PCH_LP(void);
+VOID ADL_DumpCommunity2_LP(void);
+VOID ADL_DumpCommunity3PCH_LP(void);
+VOID ADL_DumpCommunity4PCH_LP(void);
+VOID ADL_DumpCommunity5PCH_LP(void);
+//TGL dump functions
 //Dump PCH-H
 VOID TGL_DumpAllPCH_H (void);
 VOID TGL_DumpCommunity0PCH_H (void);
@@ -135,6 +145,10 @@ VOID SetColor(UINT8 Color);
 VOID PrintHelpMsg (void);
 
 VOID PrintAdlHGroupName (
+   UINT32 Community,
+   UINT32 GroupOffset
+  );
+VOID PrintAdlLpGroupName (
    UINT32 Community,
    UINT32 GroupOffset
   );
@@ -244,6 +258,25 @@ VOID PrintCommunityGroupHeader(
 #define  ADL_GPPFbase               0x000009E0
 //PCH-H Community 5
 #define  ADL_GPPDbase               0x00000700
+
+//PCH-LP Community 0
+#define  ADL_LPGPPBbase             0x00000700
+#define  ADL_LPGPPTbase             0x000008C0
+#define  ADL_LPGPPAbase             0x000009A0
+//PCH-LP Community 1
+#define  ADL_LPGPPSbase             0x00000700
+#define  ADL_LPGPPHbase             0x00000780
+#define  ADL_LPGPPDbase             0x00000900
+//PCH-LP Community 2
+#define  ADL_LPGPDbase              0x00000700
+//PCH-LP Community 3
+#define  ADL_vGPIObase              0x000007F0
+//PCH-LP Community 4
+#define  ADL_LPGPPCbase             0x00000700
+#define  ADL_LPGPPFbase             0x00000880
+#define  ADL_LPGPPEbase             0x00000A70
+//PCH-LP Community 5
+#define  ADL_LPGPPRbase             0x00000700
 
 //TGL Group Base definition
 //PCH-H
@@ -448,6 +481,7 @@ VOID PrintCommunityGroupHeader(
 #define   SKL_LPGPPFbase            0x00000400
 #define   SKL_LPGPPGbase            0x000004C0
 //Group Size
+#define   GroupSize84      84
 #define   GroupSize24      24
 #define   GroupSize23      23
 #define   GroupSize22      22

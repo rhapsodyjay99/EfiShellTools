@@ -1,0 +1,18 @@
+# GpioBLake Release Notes
+Intel Gpio tool for Skylake, Kabylake, CnlLake, Whiskylake, Ice Lake(LP), Tiger Lake(H/LP), Adler Lake(S) Adler Lake(P).
+
+v4.3
+1. Added Adler Lake P support.
+
+v4.2
+1. Fixed ADL-S reads all 0xFFFFFFFF problem.
+
+v4.1
+1. Added Group header for Adler Lake(S).
+
+V4.0
+1. Added Adler Lake S support.
+
+v3.0
+1. Initail version pushed on github.
+2. Supports Skylake, Kabylake, CnlLake, Whiskylake, Ice Lake(LP), Tiger Lake(H/LP).

@@ -44,7 +44,7 @@ UINT32 BITn[] = {
 UINT32 GetPadValue ( UINT32 Community,
                      UINT32 Offset)
 {
-   if(PchSeries == AdlPchS)
+   if(PchSeries == AdlPchH)
    {
       return MmioRead32 (PCH_PCR_BASE_ADDRESS_ADLS + (Community << 16) + Offset);
    }
@@ -65,9 +65,6 @@ VOID ParseAndPrintPadStatus(
 
   for (i = 0; i < GroupSize; i++)
   {
-
-    //GpioPadValue = GetPadValue (Community, GroupOffset + \
-    //((PchSeries == CnlPchH || PchSeries == CnlPchLp || PchSeries == CmlPchH ||  PchSeries == CmlPchLp || PchSeries == IclPchLp || PchSeries == TglPchLp || PchSeries == TglPchH)? i*16 : i*8));
     GpioPadValue = GetPadValue (Community, GroupOffset + \
     ((PchSeries == SklKblPchLp || PchSeries == SklKblCmlvPchH)? i*8 : i*16));
 
@@ -224,6 +221,61 @@ VOID PrintAdlHGroupName (
    else if(Community == ADL_PID_GPIOCOM5 && GroupOffset == ADL_GPPDbase)
    {
       Print(L"Community 5:GPP_D\n");
+   }
+}
+
+VOID PrintAdlLpGroupName (
+   UINT32 Community,
+   UINT32 GroupOffset
+  )
+{
+   if ((Community == ADL_PID_GPIOCOM0) && (GroupOffset == ADL_LPGPPBbase))
+   {
+      Print(L"Community 0:GPP_B\n");
+   }
+   else if ((Community == ADL_PID_GPIOCOM0) && (GroupOffset == ADL_LPGPPTbase))
+   {
+      Print(L"Community 0:GPP_T\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM0 && GroupOffset == ADL_LPGPPAbase)
+   {
+      Print(L"Community 0:GPP_A\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM1 && GroupOffset == ADL_LPGPPSbase)
+   {
+      Print(L"Community 1:GPP_S\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM1 && GroupOffset == ADL_LPGPPHbase)
+   {
+      Print(L"Community 1:GPP_H\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM1 && GroupOffset == ADL_LPGPPDbase)
+   {
+      Print(L"Community 1:GPP_D\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM2 && GroupOffset == ADL_LPGPDbase)
+   {
+      Print(L"Community 2:GPD\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM3 && GroupOffset == ADL_vGPIObase)
+   {
+      Print(L"Community 2:GPP_vGPIO\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_LPGPPCbase)
+   {
+      Print(L"Community 4:GPP_C\n");
+   }
+   else if (Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_LPGPPFbase)
+   {
+      Print(L"Community 4:GPP_F\n");
+   }
+   else if(Community == ADL_PID_GPIOCOM4 && GroupOffset == ADL_LPGPPEbase)
+   {
+      Print(L"Community 4:GPP_E\n");
+   }
+   else if(Community == ADL_PID_GPIOCOM5 && GroupOffset == ADL_LPGPPRbase)
+   {
+      Print(L"Community 5:GPP_R\n");
    }
 }
 
@@ -600,8 +652,12 @@ PrintCommunityGroupHeader(
 
   switch (PchSeries)
   {
-     case AdlPchS:
+     case AdlPchH:
         PrintAdlHGroupName(Community, GroupOffset);
+        break;
+
+     case AdlPchLp:
+        PrintAdlLpGroupName(Community, GroupOffset);
         break;
 
      case TglPchH:

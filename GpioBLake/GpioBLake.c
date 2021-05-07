@@ -41,7 +41,7 @@ main (
   {
      PrintHelpMsg();
   }
-  if (PchSeries == AdlPchS)
+  if (PchSeries == AdlPchH)
   {
      if(Argv[1][0] == 'a' || Argv[1][0] == 'A') //Show All
      {
@@ -73,6 +73,47 @@ main (
         else if(Argv[2][0] == '5') //show community 5
         {
            ADL_DumpCommunity5PCH_H();
+        }
+     }
+
+     if(Argv[1][0] == 'l' || Argv[1][0] == 'L') //Show Lock status
+     {
+        //CNL_DumpLockStatusPCH_H();
+        Print(L"Not Porting yet");
+     }
+  }
+  else if (PchSeries == AdlPchLp)
+  {
+     if(Argv[1][0] == 'a' || Argv[1][0] == 'A') //Show All
+     {
+        ADL_DumpAllPCH_LP();
+     }
+
+     if(Argv[1][0] == 'd' || Argv[1][0] == 'D')
+     {
+        if(Argv[2][0] == '0') //show community 0
+        {
+           ADL_DumpCommunity0PCH_LP();
+        }
+        else if(Argv[2][0] == '1') //show community 1
+        {
+           ADL_DumpCommunity1PCH_LP();
+        }
+        else if(Argv[2][0] == '2') //show community 2
+        {
+           ADL_DumpCommunity2_LP();
+        }
+        else if(Argv[2][0] == '3') //show community 3
+        {
+           ADL_DumpCommunity3PCH_LP();
+        }
+        else if(Argv[2][0] == '4') //show community 4
+        {
+           ADL_DumpCommunity4PCH_LP();
+        }
+        else if(Argv[2][0] == '5') //show community 5
+        {
+           ADL_DumpCommunity5PCH_LP();
         }
      }
 
@@ -362,7 +403,12 @@ UINT8 GetPchSeries ()
    {
       case V_LPC_CFG_DID_ADL_S:
          Print(L"PCH: AdlS\n");
-         PchSeries = AdlPchS;
+         PchSeries = AdlPchH;
+         break;
+
+      case V_LPC_CFG_DID_ADL_P:
+         Print(L"PCH: AdlP\n");
+         PchSeries = AdlPchLp;
          break;
 
       case V_LPC_CFG_DID_TGL_LP:
@@ -425,7 +471,7 @@ UINT8 GetPchSeries ()
 
 VOID PrintHelpMsg()
 {
-   Print(L"GPIO tool Ver. 4.2\n\n");
+   Print(L"GPIO tool Ver. 4.3\n\n");
    Print(L"To show help menu:\n");
    Print(L"fs#:\\>GpioBLake.efi ? or fs#:\\GpioBLake.efi h\n");
    Print(L"To Dump all Gpios:\n");
