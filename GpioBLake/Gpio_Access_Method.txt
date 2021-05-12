@@ -1,0 +1,37 @@
+This paper will show the GPIO MMIO address for manual check.
+
+We can be access via (SBREG_BAR + PortID + Register Offset)
+
+1. SBREG_BAR can search "PCH_PCR_BASE_ADDRESS" in h files.
+ex : 
+PchReservedResourcesAdpP.h(63) :#define PCH_PCR_BASE_ADDRESS            0xFD000000     ///< SBREG MMIO base address
+PchReservedResourcesAdpS.h(84) :#define PCH_PCR_BASE_ADDRESS            0xE0000000     ///< SBREG MMIO base address
+
+2. PortID can refer EDS vol 1 or search "PID_GPIOCOM0" in h files
+Refer to EDS vol 1 - last chapter "Pvivate Configuration Space Taeget Port ID"
+ex : GpioAcpiDefines.h(39) :#define PCH_GPIO_COM0 0x006e0000 // PID_GPIOCOM0 = 0x6E
+
+3. Register Offset
+Refer to EDS vol 2 - General Purpose I/O (GPIO) to know the GPIO Community 
+This section covers register for Community 0, which consists of GPP_I, GPP_J, and GPP_R groups.
+ex : Pad Configuration DW0 (PAD_CFG_DW0_GPP_R_19) - Offset 9C0h
+
+Note. the GPIO Group rout to DW0/1/2 need check BIOS settings.
+
+TOKEN
+    Name  = "GPE_DWx_H_LIST"
+    #Value  = "{GPIO_SKL_H_GROUP_GPP_H, GPIO_SKL_H_GROUP_GPP_A, GPIO_SKL_H_GROUP_GPP_B}"
+    Value  = "{GPIO_SKL_H_GROUP_GPP_C, GPIO_SKL_H_GROUP_GPP_H, GPIO_SKL_H_GROUP_GPP_A}" #538740 >>*
+    Help  = "Format:{GPE_DW0, GPE_DW1, GPE_DW2}"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+Try to check the GPP_R19 MMIO as E06E09C0h (SBREG_BAR + PortID + Register Offset)
+
+Try to parsing the GPIO register by 32bits refer to GPP_R0_0 offset 890h as below :
+
+-PAD mode for GPIO/Native1~x by bit 10~12
+-GPIO mode by bit 8~9 (01 GPI, 10 GPO)
+-GPIO status by bit 0~1 (bit0 for GPO H/L, bit1 for GPI H/L)
+
